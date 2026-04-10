@@ -37,9 +37,9 @@ def obtain_arrays(data, random_seed):
         high_array.append(post_prob[np.arange(post_prob.shape[0]), np.full(post_prob.shape[0], high_idx)])
 
         # Correct outliers
-        high_outlier_cutoff = gmm[-1].means_[high_idx] + sqrt(gmm[-1].covariances_[high_idx][0])
+        high_outlier_cutoff = gmm[-1].means_[high_idx] + sqrt(gmm[-1].covariances_[high_idx][0].item())
         high_outlier_idx = np.argwhere(X > high_outlier_cutoff)[:,0].ravel()
-        low_outlier_cutoff = gmm[-1].means_[1-high_idx] - sqrt(gmm[-1].covariances_[1-high_idx][0])
+        low_outlier_cutoff = gmm[-1].means_[1-high_idx] - sqrt(gmm[-1].covariances_[1-high_idx][0].item())
         low_outlier_idx = np.argwhere(X < low_outlier_cutoff)[:,0].ravel()
 
         high_array[-1][high_outlier_idx] = 1.0
