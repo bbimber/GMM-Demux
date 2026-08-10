@@ -17,8 +17,8 @@ def clr_norm(data_df):
         #print(gmean)
 
         # Notes: pandas>3 will throw a LossySetitemError when converting from integer counts to float values:
-        data_df.loc[:,hto] = data_df.loc[:,hto].astype(float)
-        data_df.loc[:,hto] = np.log(np.true_divide(compensated_values, gmean))
+        data_df.loc[hto] = data_df.loc[hto].astype(float)
+        data_df.loc[hto] = np.log(np.true_divide(compensated_values, gmean))
 
     return data_df
 
